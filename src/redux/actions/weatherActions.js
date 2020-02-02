@@ -19,25 +19,10 @@ export const featchWeatherFailure = errorMessage => ({
     errorMessage,
 });
 
-export const shiftWeather = data => ({
+export const shiftWeather = (limit) => ({
     type:SHIFT_WEATHER,
-    data,
+    limit,
 })
-
-export const loadShiftWeather = (city,limit) => dispatch => {
-    getWeather(city)
-    .then(data => {
-        const forecast = data.forecast.slice(0,limit);
-        dispatch(fetchWeatherSuccess (
-            {   
-                    forecast,
-                    limit,
-            }
-        ));
-    }).catch(error => {
-        dispatch(featchWeatherFailure(error.message));
-    })
-}
 
 export const loadWeather = (city,limit) => dispatch => {
     dispatch(featchWeather());
@@ -46,7 +31,7 @@ export const loadWeather = (city,limit) => dispatch => {
     .then(data => {
         const city = data.city.name;
         const current = data.current;
-        const forecast = data.forecast.slice(0,limit);
+        const forecast = data.forecast.slice(0,11);
         dispatch(fetchWeatherSuccess (
             {
                     city,

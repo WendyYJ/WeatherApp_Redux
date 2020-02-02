@@ -1,6 +1,7 @@
-import {CHANGE_UNIT} from '../redux/actions/navigationActions';
+import {CHANGE_UNIT, SEARCH_VALUE} from '../redux/actions/navigationActions';
 const initialState = {
-    unit:'C'
+    unit:'C',
+    searchValue:'',
 };
 
 export const navigationReducer = (state = initialState,action) => {
@@ -9,6 +10,11 @@ export const navigationReducer = (state = initialState,action) => {
             return {  
                 ...state,
                 unit:state.unit === 'C'?'F':'C'
+            }
+        case SEARCH_VALUE:
+            return {
+                ...state,
+                searchValue:action.value,
             }
         default:
             return state;
