@@ -1,3 +1,5 @@
+This App is deployed on Heroku. http://weatherapp-redux.herokuapp.com/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
